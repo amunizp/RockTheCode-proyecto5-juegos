@@ -1,0 +1,14 @@
+footer h3 {
+  font-family: 'lato-black';
+  color: var(--main-color-text);
+  font-weight: bolder;
+  text-transform: capitalize;
+  font-size: var(--spacing-med-lg);
+  text-align: center;
+}
+footer {
+  font-family: lato;
+  font-size: var(--font-size-base);
+  color: var(--main-color-text);
+  text-align: center;
+}

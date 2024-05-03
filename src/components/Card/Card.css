@@ -1,0 +1,32 @@
+:root {
+  --rtc-color-card: var(--rtc-color-5);
+}
+/*TODO no se si tiene sentido el :root aqui pero no parece estar haciendo nada? */
+
+.card {
+  width: var(--rtc-content-width-narrow);
+  margin: 50px;
+  border-radius: 8px;
+  background-color: var(--rtc-color-card);
+  overflow: hidden;
+  padding-bottom: 20px;
+  min-height: 300px;
+  justify-content: center;
+}
+
+.card > img {
+  object-fit: cover;
+  width: 100%;
+}
+.card > figcaption {
+  align-self: flex-end;
+}
+
+.card > h3 {
+  text-align: center;
+}
+
+.card > p {
+  text-align: center;
+  margin: 10px;
+}

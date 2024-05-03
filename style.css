@@ -1,96 +1,352 @@
+/* The RML CSS was inspired by Emma Scott's work for RichmondMakerLabs. Emma where every you are, thank you very much! */
+
+@font-face {
+  font-family: 'droidserif';
+  src: local('droidserif'), url('./fonts/droidserif/DroidSerif-BoldItalic.ttf'),
+    format('truetype')
+      url('./fonts/droidserif/droidserif-bolditalic-webfont.woff2')
+      format('woff2'),
+    url('./fonts/droidserif/droidserif-bolditalic-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'lato-black';
+  src: local('lato'), url('./fonts/Lato/Lato-Black.ttf') format('truetype'),
+    url('./fonts/Lato/lato-black-webfont.woff2') format('woff2'),
+    url('./fonts/Lato/lato-black-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'lato';
+  src: local('lato'), url('./fonts/Lato/Lato-Regular.ttf') format('truetype'),
+    url('./fonts/Lato/lato-regular-webfont.woff2') format('woff2'),
+    url('./fonts/Lato/lato-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cabin_Sketch';
+  src: local('Cabin_Sketch'),
+    url('./fonts/Cabin_Sketch/CabinSketch-Bold.ttf') format('truetype'),
+    url('./fonts/Cabin_Sketch/cabinsketch-bold-webfont.woff2') format('woff2'),
+    url('./fonts/Cabin_Sketch/cabinsketch-bold-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: local('Montserrat'),
+    url('./fonts/Montserrat/fonts/ttf/Montserrat-Bold.ttf') format('truetype'),
+    url('./fonts/Montserrat/fonts/webfonts/Montserrat-Bold.woff2')
+      format('woff2'),
+    url('./fonts/Montserrat/fonts/webfonts/Montserrat-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'blackcraft';
+  src: local('blackcraft'),
+    url('./fonts/blackcraft/blackcraft.ttf') format('truetype'),
+    url('./fonts/blackcraft/blackcraft-webfont.woff2') format('woff2'),
+    url('./fonts/blackcraft/blackcraft-webfont.woff2') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* root template content: RTC */
+  /* font related stuff */
+  --rtc-font-primary: lato;
+  --rtc-font-primary-strong: lato-black;
+  --rtc-font-aside: droidserif;
+  --rtc-font-heading1: Cabin_Sketch;
+  --rtc-font-heading1-alt: blackcraft;
+  --rtc-font-heading2: Montserrat;
+  --rtc-font-heading3-subheadings: lato-black;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --rtc-margin-xs: 10px;
+  --rtc-margin-s: 20px;
+  --rtc-margin-m: 30px;
+  --rtc-margin-l: 40px;
+  --rtc-margin-xl: 50px;
+  --rtc-margin-section: 100px;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --rtc-padding-xs: 10px;
+  --rtc-padding-s: 20px;
+  --rtc-padding-m: 30px;
+  --rtc-padding-l: 40px;
+  --rtc-padding-xl: 50px;
+
+  --rtc-gap-xs: 10px;
+  --rtc-gap-s: 20px;
+  --rtc-gap-m: 30px;
+  --rtc-gap-l: 40px;
+  --rtc-gap-xl: 50px;
+
+  --rtc-max-width: 1000px;
+  --rtc-tablet-width: 800px;
+  --rtc-phone-width: 370px;
+  --rtc-content-width-narrow: 200px;
+  --rtc-content-width-wide: 1200px;
+
+  /*Branding colors*/
+  --rtc-color: #50763d;
+  --rtc-color-1: #224099;
+  --rtc-color-2: #189d98;
+  --rtc-color-3: #78c486;
+  --rtc-color-4: #f9d445;
+  --rtc-color-5: #c09201;
+  --rtc-color-text: #5a4a42;
+  /* background colors */
+  --rtc-bg-primary: var(--rtc-color);
+  --rtc-bg-mesh-color: #28a9e11f;
+  --rtc-bg-transparency: rgba(250, 250, 250, 0.9);
+  --rtc-bg-blank-color: #ffffff;
+  /* font colors */
+  --rtc-font-color-p: var(--rtc-color-text);
+  /* aside is another word for pull quotes */
+  --rtc-font-color-aside1: var(--rtc-color-1);
+  --rtc-font-color-aside2: var(--rtc-color-2);
+  --rtc-font-color-aside3: var(--rtc-color-3);
+  --rtc-font-color-aside4: var(--rtc-color-4);
+  --rtc-font-color-aside5: var(--rtc-color-5);
+  /* heading colors */
+  --rtc-font-color-h1-impact: var(--rtc-color-1);
+  --rtc-font-color-h2: var(--rtc-color);
+  --rtc-font-color-h2-span: var(--rtc-color-3);
+  --rtc-font-color-subheading: var(--rtc-color-text);
+  /* BORDER RADIUS */
+  --rtc-primary-br: 4px;
+  --rtc-secondary-br: 2px;
 }
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+* {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--rtc-font-primary);
+  color: var(--rtc-font-color-p);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+ul,
+ol {
+  list-style: none;
 }
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+a {
+  text-decoration: none;
+}
+p,
+h3,
+li,
+figcaption,
+a {
+  color: var(--rtc-font-color-p);
+}
+p,
+h3,
+figcaption,
+button,
+a {
   text-align: center;
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+a:hover,
+details,
+button,
+summary.menu,
+.circle {
   cursor: pointer;
-  transition: border-color 0.25s;
+  font-size: larger;
 }
-button:hover {
-  border-color: #646cff;
+.pagebreak {
+  padding: var(--rtc-gap-l);
+  background-color: var(--rtc-color-4);
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+button {
+  background-color: var(--rtc-bg-primary);
+  color: var(--rtc-bg-blank-color);
+  padding: var(--rtc-gap-xs);
+  border-radius: var(--rtc-gap-xs);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+h2 {
+  color: var(--rtc-font-color-h2);
+  font-family: var(--rtc-font-heading2);
+  font-weight: bolder;
+  text-transform: uppercase;
+  /* font-size: var(--font-size-base); */
+  text-align: center;
+  padding-bottom: var(--rtc-gap-m);
+  margin-top: var(--rtc-gap-m);
+}
+h2 > span {
+  color: var(--rtc-font-color-h2-span);
+}
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--rtc-font-heading3-subheadings);
+  /* margin-top: var(--rtc-gap-m); */
+  font-weight: bolder;
+  text-transform: capitalize;
+  /* font-size: var(--rtc-gap-s); */
+  text-align: center;
+}
+body {
+  background-color: var(--rtc-primary-bg);
+  padding-bottom: 100px;
+}
+html {
+  scroll-behavior: smooth;
+
+  scroll-padding-top: 10svh; /* height of sticky header */
+}
+
+header a,
+h1,
+summary {
+  font-weight: 500;
+  color: var(--rtc-bg-blank-color);
+  font-family: var(--rtc-font-heading1);
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--rtc-gap-s);
+}
+.column {
+  flex-direction: column;
+  justify-content: center;
+}
+.row {
+  flex-direction: row;
+}
+
+ul.general {
+  display: inline;
+  width: fit-content;
+  padding: 0px;
+  list-style-position: inside;
+  list-style: none;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.splatter {
+  background-image: url(./images/BlueSplatter.png),
+    url(./images/pink-splatter.png), url(./images/yellow-splatter.png),
+    url(./images/green-splatter.png), url(./images/OrangeSplatter.png);
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  background-position: top left, top center, bottom center, bottom right, right;
+}
+
+article {
+  padding: var(--rtc-gap-s);
+  margin: 0px;
+  /* padding-top: var(--rtc-gap-xl); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cuadricula {
+  background-color: var(--rtc-bg-blank-color);
+  background-image: linear-gradient(
+      var(--rtc-bg-mesh-color) 1.9px,
+      transparent 1.9px
+    ),
+    linear-gradient(to right, var(--rtc-bg-mesh-color) 1.9px, transparent 1.9px);
+  background-size: var(--rtc-gap-l) var(--rtc-gap-l);
+  background-repeat: repeat, repeat;
+  background-position: center, center;
+}
+
+.RML-LinedPaper {
+  /* background-color: var(--rtc-bg-blank-color); */
+  border: 0.2rem solid var(--rtc-bg-mesh-color);
+
+  background-image: linear-gradient(
+      90deg,
+      transparent 30px,
+      #abced4 30px,
+      #abced4 32px,
+      transparent 32px
+    ),
+    linear-gradient(#eee 0.1em, transparent 0.1em);
+  background-size: 100% 1.2em;
+  /* background-repeat: no-repeat, no-repeat, repeat; */
+
+  padding-left: var(--rtc-gap-l);
+}
+article.side-box {
+  border-radius: var(--rtc-primary-br);
+  max-width: var(--rtc-phone-width);
+}
+/* https://webdesign.tutsplus.com/create-a-sticky-note-effect-in-5-easy-steps-with-css3-and-html5--net-13934t */
+.stickynote {
+  text-decoration: none;
+  background: var(--rtc-color-4);
+  display: block;
+  /* height: 10em;
+  width: 10em; */
+  padding: 1em;
+  box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7);
+  transform: rotate(-6deg);
+  transition: transform 0.15s linear;
+}
+.stickynote:hover,
+.stickynote:focus {
+  box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.7);
+  transform: scale(1.25);
+  position: relative;
+  z-index: 5;
+}
+
+li:has(figure)::before {
+  content: none;
+}
+
+.widescreen {
+  max-width: 1200px;
+}
+
+* p figcaption a,
+.inText {
+  color: var(--rtc-color);
+  text-decoration-line: underline;
+}
+
+* figcaption a {
+  color: var(--rtc-color);
+  text-decoration-line: underline;
+}
+
+@media (width >800px) {
+  ul.facilities li {
+    /* flex: 2 1 350px; */
+    flex: 300px;
+    max-width: 300px;
   }
-  a:hover {
-    color: #747bff;
+}
+
+@media (width <= 500px) {
+  header > nav {
+    display: none;
   }
-  button {
-    background-color: #f9f9f9;
+
+  * p {
+    font-size: var(--font-size-slightlyLarger);
+    line-height: 1.5;
   }
 }

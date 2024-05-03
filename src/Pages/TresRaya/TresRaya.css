@@ -1,0 +1,22 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--rtc-gap-xs);
+  /* grid-auto-rows: minmax(100px, auto); */
+  grid-template-rows: repeat(3, 1fr);
+  padding: calc(var(--rtc-gap-xs) / 2);
+}
+.green {
+  background-color: var(--rtc-color);
+}
+.yellow {
+  background-color: var(--rtc-color-4);
+}
+.tickSize {
+  height: var(--rtc-gap-xl);
+  width: var(--rtc-gap-xl);
+}
+.largeFont {
+  font-size: xx-large;
+  font-weight: bolder;
+}
