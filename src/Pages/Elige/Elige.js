@@ -13,7 +13,11 @@ export const Elige = () => {
   divApp.appendChild(sectionElement)
   arrayEnlaces.map((enlace) => {
     if (enlace.texto !== 'Elige un Juego') {
-      Card(sectionElement, enlace.imagen, enlace.texto, enlace.description)
+      const aElement = document.createElement('a')
+      sectionElement.appendChild(aElement)
+      console.log('estoy aqui')
+      aElement.addEventListener('click', enlace.page)
+      Card(aElement, enlace.imagen, enlace.texto, enlace.description)
     }
   })
 }
