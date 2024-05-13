@@ -10,8 +10,6 @@ import listaImages from './MemoriaData'
 
 export const Memoria = () => {
   const divApp = document.querySelector('main')
-  var clickcount = 0
-  var visibleCards = []
   localStorage.setItem('lastPage', 'Memoria')
   divApp.innerHTML = ''
   const headingelement = document.createElement('h2')
@@ -27,36 +25,51 @@ export const Memoria = () => {
     Card(cardA, element.location, element.letra, '', '', '50px', '50px')
     const saveImage = cardA.firstChild.querySelector('img')
     const saveCaption = cardA.firstChild.querySelector('figcaption')
-    saveCaption.remove()
-    cardA.addEventListener('click', () => {
-      if (cardA.firstChild.querySelector('img')) {
-        cardA.firstChild.querySelector('img').remove()
-        cardA.firstChild.appendChild(saveCaption)
-        clickcount += 1
-        visibleCards.push(element.letra)
-        console.log(element.letra)
-        if (visibleCards[0] === visibleCards[1]) {
-          console.log(`son iguales! ${visibleCards}`)
-          //TODO igual quitar todo esto con un check win? una funcion aparte?
-          removeEventListener('click', cardA)
+    saveCaption.classList.toggle('hideCaption')
+    cardA.addEventListener('click', function voltea(event) {
+      saveCaption.classList.toggle('hideCaption')
+      saveImage.classList.toggle('hideImage')
+      cardA.classList.toggle('flipped')
+      var elementsCaption = document.getElementsByClassName('hideImage')
+      console.log(elementsCaption.length)
+      console.log(elementsCaption)
+      if (elementsCaption.length > 1) {
+        console.log(
+          `primer elemento ${elementsCaption[0].innerHTML} y segundo elemento ${elementsCaption[1].innerHTML}`
+        )
+        if (
+          elementsCaption[0].closest('figure').innerHTML ===
+          elementsCaption[1].closest('figure').innerHTML
+        ) {
+          console.log(elementsCaption[0].innerHTML)
+          console.log('son iguales!')
+          cardA.removeEventListener('click', voltea)
+          cardA.classList.toggle('flipped')
+          var flippedCard = document.querySelector('.flipped')
+          console.log(flippedCard.innerHTML)
+          //TODO Aqui es donde no me quita el event listener!
+          flippedCard.removeEventListener('click', voltea)
+        } else {
+          console.log('son distintos')
+          saveCaption.classList.toggle('hideCaption')
+          saveImage.classList.toggle('hideImage')
+          cardA.classList.toggle('flipped')
+          console.log(
+            elementsCaption[0].closest('figure').querySelector('figcaption')
+          )
+          elementsCaption[0]
+            .closest('figure')
+            .querySelector('figcaption')
+            .classList.toggle('hideCaption')
+          console.log(elementsCaption[0].closest('figure').querySelector('img'))
+          elementsCaption[0]
+            .closest('figure')
+            .querySelector('img')
+            .classList.toggle('hideImage')
+          var flippedCard = document.querySelector('.flipped')
+          flippedCard.classList.toggle('flipped')
         }
-      } else {
-        cardA.firstChild.querySelector('figcaption').remove()
-        cardA.firstChild.appendChild(saveImage)
-        clickcount -= 1
-        const location = visibleCards.indexOf(element.letra)
-        console.log(`I removed ${visibleCards.splice(location, 1)}`)
-        console.log(`the list is now ${visibleCards}`)
       }
-
-      // cardA.firstChild.querySelector('img').alt = ''
-      console.log(
-        ` ${clickcount} cartas visibles. se ve ${visibleCards[0]}  y ${visibleCards[1]}`
-      )
-
-      // if (visibleCards[0] === visibleCards[1]) {
-      //   console.log(`son iguales! ${visibleCards}`)
-      // }
     })
   })
 }
