@@ -1,11 +1,20 @@
 import './Card.css'
 
 // que necesitamos para crear elementos mediante createElement...
-export const Card = (nodoPadre, url, titulo, texto, link) => {
+export const Card = (
+  nodoPadre,
+  url,
+  titulo,
+  texto,
+  link,
+  cardWidth,
+  cardHeight
+) => {
   const cardHTML = document.createElement('figure')
 
   cardHTML.classList.add('card', 'flex-container', 'column')
-
+  cardHTML.style.width = cardWidth
+  cardHTML.style.height = cardHeight
   if (url) {
     const img = document.createElement('img')
     img.src = url

@@ -342,7 +342,7 @@ li:has(figure)::before {
 
 @media (width <= 500px) {
   header > nav {
-    display: none;
+    /* display: none; */
   }
 
   * p {

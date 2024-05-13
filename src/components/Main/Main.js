@@ -1,4 +1,5 @@
 import { Elige } from '../../Pages/Elige/Elige'
+import { Memoria } from '../../Pages/Memoria/Memoria'
 import { TresRaya } from '../../Pages/TresRaya/TresRaya'
 import './Main.css'
 
