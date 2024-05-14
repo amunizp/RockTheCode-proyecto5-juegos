@@ -26,7 +26,7 @@ export const Memoria = () => {
     const saveImage = cardA.firstChild.querySelector('img')
     const saveCaption = cardA.firstChild.querySelector('figcaption')
     saveCaption.classList.toggle('hideCaption')
-    cardA.addEventListener('click', function voltea(event) {
+    cardA.addEventListener('click', function voltea(_event) {
       saveCaption.classList.toggle('hideCaption')
       saveImage.classList.toggle('hideImage')
       cardA.classList.toggle('flipped')
@@ -37,17 +37,33 @@ export const Memoria = () => {
         // console.log(
         //   `primer elemento ${elementsFlipped[0].innerHTML} y segundo elemento ${elementsFlipped[1].innerHTML}`
         // )
+        let elementFlipped01 = elementsFlipped[0]
+        let elementFlipped02 = elementsFlipped[1]
         if (
-          elementsFlipped[0].querySelector('h3').innerHTML ===
-          elementsFlipped[1].querySelector('h3').innerHTML
+          elementFlipped01.querySelector('h3').innerHTML ===
+          elementFlipped02.querySelector('h3').innerHTML
         ) {
           console.log(elementsFlipped[0].querySelector('h3').innerHTML)
           console.log(elementsFlipped[1].querySelector('h3').innerHTML)
           console.log('son iguales!')
           // cardA.classList.toggle('flipped')
+          elementFlipped01.classList.add('paired')
+          elementFlipped02.classList.add('paired')
+          //TODO creando una nueva colleccion aun solo quita al ultimo elemento
+
+          // var emparejadas = document.getElementsByClassName('paired')
+          // for (const carta of emparejadas) {
+          //   carta.removeEventListener('click', voltea)
+          // }
           //TODO con esto quita el segundo pero no el primero. Si lo pongo al reves hace al reves
-          elementsFlipped[1].removeEventListener('click', voltea)
-          elementsFlipped[0].removeEventListener('click', voltea)
+          // elementFlipped02.removeEventListener('click', voltea)
+          // elementFlipped01.removeEventListener('click', voltea)
+          //TODO esto lo saque de aqui pero lo que hace es copiar el elemento sin el evento: https://stackoverflow.com/questions/4386300/javascript-dom-how-to-remove-all-event-listeners-of-a-dom-object PERO FUNCIONA!
+          // elementFlipped01.outerHTML = elementFlipped01.outerHTML
+          // elementFlipped02.outerHTML = elementFlipped02.outerHTML
+          elementFlipped01.replaceWith(elementFlipped01.cloneNode(true))
+          elementFlipped02.replaceWith(elementFlipped02.cloneNode(true))
+
           console.log(elementsFlipped[0].innerHTML)
           //TODO con esto hace solo el ultimo.
           //cardA.removeEventListener('click', voltea)
