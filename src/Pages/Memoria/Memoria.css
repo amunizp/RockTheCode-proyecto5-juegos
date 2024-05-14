@@ -21,7 +21,9 @@
   font-weight: bolder;
 }
 .paired {
-  visibility: hidden;
+  /* border: var(--rtc-gap-xs) solid var(--rtc-color-4); */
+  /* visibility: hidden; */
+  pointer-events: none;
 }
 figcaption.hideCaption {
   display: none;
@@ -30,5 +32,6 @@ img.hideImage {
   display: none;
 }
 a.flipped {
-  border: 2px solid red;
+  padding: 0;
+  /* border: var(--rtc-gap-xs) solid var(--rtc-color-4); */
 }

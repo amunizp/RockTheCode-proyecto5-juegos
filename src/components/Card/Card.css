@@ -5,7 +5,7 @@
 
 .card {
   width: var(--rtc-content-width-narrow);
-  margin: var(--rtc-margin-xs);
+  /* margin: var(--rtc-margin-xs); */
   border-radius: var(--rtc-margin-xs);
   background-color: var(--rtc-color-card);
   overflow: hidden;
