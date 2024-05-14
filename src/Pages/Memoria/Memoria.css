@@ -21,8 +21,6 @@
   font-weight: bolder;
 }
 .paired {
-  /* border: var(--rtc-gap-xs) solid var(--rtc-color-4); */
-  /* visibility: hidden; */
   pointer-events: none;
 }
 figcaption.hideCaption {
