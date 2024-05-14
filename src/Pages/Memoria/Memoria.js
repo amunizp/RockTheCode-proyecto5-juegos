@@ -30,39 +30,43 @@ export const Memoria = () => {
       saveCaption.classList.toggle('hideCaption')
       saveImage.classList.toggle('hideImage')
       cardA.classList.toggle('flipped')
-      var elementsCaption = document.getElementsByClassName('hideImage')
-      console.log(elementsCaption.length)
-      console.log(elementsCaption)
-      if (elementsCaption.length > 1) {
-        console.log(
-          `primer elemento ${elementsCaption[0].innerHTML} y segundo elemento ${elementsCaption[1].innerHTML}`
-        )
+      var elementsFlipped = document.getElementsByClassName('flipped')
+      console.log(elementsFlipped.length)
+      console.log(elementsFlipped)
+      if (elementsFlipped.length > 1) {
+        // console.log(
+        //   `primer elemento ${elementsFlipped[0].innerHTML} y segundo elemento ${elementsFlipped[1].innerHTML}`
+        // )
         if (
-          elementsCaption[0].closest('figure').innerHTML ===
-          elementsCaption[1].closest('figure').innerHTML
+          elementsFlipped[0].querySelector('h3').innerHTML ===
+          elementsFlipped[1].querySelector('h3').innerHTML
         ) {
-          console.log(elementsCaption[0].innerHTML)
+          console.log(elementsFlipped[0].querySelector('h3').innerHTML)
+          console.log(elementsFlipped[1].querySelector('h3').innerHTML)
           console.log('son iguales!')
-          cardA.removeEventListener('click', voltea)
-          cardA.classList.toggle('flipped')
-          var flippedCard = document.querySelector('.flipped')
-          console.log(flippedCard.innerHTML)
-          //TODO Aqui es donde no me quita el event listener!
-          flippedCard.removeEventListener('click', voltea)
+          // cardA.classList.toggle('flipped')
+          //TODO con esto quita el segundo pero no el primero. Si lo pongo al reves hace al reves
+          elementsFlipped[1].removeEventListener('click', voltea)
+          elementsFlipped[0].removeEventListener('click', voltea)
+          console.log(elementsFlipped[0].innerHTML)
+          //TODO con esto hace solo el ultimo.
+          //cardA.removeEventListener('click', voltea)
+
+          // cardA.removeEventListener('click', voltea)
         } else {
           console.log('son distintos')
           saveCaption.classList.toggle('hideCaption')
           saveImage.classList.toggle('hideImage')
           cardA.classList.toggle('flipped')
           console.log(
-            elementsCaption[0].closest('figure').querySelector('figcaption')
+            elementsFlipped[0].closest('figure').querySelector('figcaption')
           )
-          elementsCaption[0]
+          elementsFlipped[0]
             .closest('figure')
             .querySelector('figcaption')
             .classList.toggle('hideCaption')
-          console.log(elementsCaption[0].closest('figure').querySelector('img'))
-          elementsCaption[0]
+          console.log(elementsFlipped[0].closest('figure').querySelector('img'))
+          elementsFlipped[0]
             .closest('figure')
             .querySelector('img')
             .classList.toggle('hideImage')
