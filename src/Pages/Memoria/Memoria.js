@@ -23,7 +23,7 @@ export const Memoria = () => {
   divApp.appendChild(gameElement)
   gameElement.classList.add('gridCards', 'green', 'tapete')
 
-  //shuffleArray(listaImages)
+  shuffleArray(listaImages)
   listaImages.forEach((element) => {
     const cardA = document.createElement('a')
     gameElement.appendChild(cardA)
