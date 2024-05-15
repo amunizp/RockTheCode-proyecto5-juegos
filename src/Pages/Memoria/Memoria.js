@@ -8,7 +8,7 @@ import { Card } from '../../components/Card/Card'
 import { puntosMemoria } from '../../components/PuntosMemoria/puntosMemoria'
 import { shuffleArray } from '../../components/shuffle/shuffle'
 import './Memoria.css'
-import listaImages from './MemoriaData'
+import listaCards from './MemoriaData'
 
 export const Memoria = () => {
   const divApp = document.querySelector('main')
@@ -23,12 +23,11 @@ export const Memoria = () => {
   divApp.appendChild(gameElement)
   gameElement.classList.add('gridCards', 'green', 'tapete')
 
-  shuffleArray(listaImages)
-  listaImages.forEach((element) => {
+  shuffleArray(listaCards)
+  listaCards.forEach((element) => {
     const cardA = document.createElement('a')
     gameElement.appendChild(cardA)
     Card(cardA, element.location, element.letra, '', '', '50px', '50px')
-    // const saveImage = cardA.firstChild.querySelector('img')
     cardA.querySelector('figcaption').classList.toggle('hideCaption')
 
     cardA.addEventListener(

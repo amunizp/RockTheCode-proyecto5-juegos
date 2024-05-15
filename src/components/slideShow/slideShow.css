@@ -1,0 +1,38 @@
+/* ref https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_slideshow_auto */
+
+* {
+  box-sizing: border-box;
+}
+
+.mySlides {
+  display: none;
+}
+
+/* .mySlidesShow {
+  display: block;
+} */
+img {
+  vertical-align: middle;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}

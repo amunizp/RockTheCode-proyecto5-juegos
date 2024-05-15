@@ -1,4 +1,4 @@
-const listaImages = [
+const listaCards = [
   { location: './images/photos.png', visible: false, letra: 'A' },
   { location: './images/photos.png', visible: false, letra: 'A' },
   { location: './images/photos.png', visible: false, letra: 'B' },
@@ -17,4 +17,4 @@ const listaImages = [
   { location: './images/photos.png', visible: false, letra: 'H' }
 ]
 
-export default listaImages
+export default listaCards

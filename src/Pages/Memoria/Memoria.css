@@ -23,13 +23,28 @@
 .paired {
   pointer-events: none;
 }
-figcaption.hideCaption {
-  display: none;
-}
+figcaption.hideCaption,
 img.hideImage {
   display: none;
+  backface-visibility: hidden;
 }
+
 a.flipped {
   padding: 0;
   /* border: var(--rtc-gap-xs) solid var(--rtc-color-4); */
+}
+/* TODO parece que lo de rotar cartas funciona a medias.  */
+a {
+  perspective: 1000px;
+}
+figure {
+  position: relative;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+a:active figure {
+  transform: rotateX(180deg);
+}
+figcaption.hideCaption {
+  transform: rotateX(180deg);
 }

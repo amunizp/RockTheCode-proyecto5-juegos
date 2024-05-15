@@ -4,11 +4,11 @@ import './Card.css'
 export const Card = (
   nodoPadre,
   url,
-  titulo,
-  texto,
-  link,
-  cardWidth,
-  cardHeight
+  titulo = null,
+  texto = null,
+  link = null,
+  cardWidth = null,
+  cardHeight = null
 ) => {
   const cardHTML = document.createElement('figure')
 

@@ -1,4 +1,5 @@
 import { Elige } from '../../Pages/Elige/Elige'
+import { Mateo } from '../../Pages/Mateo/Mateo'
 import { Memoria } from '../../Pages/Memoria/Memoria'
 import { TresRaya } from '../../Pages/TresRaya/TresRaya'
 import './Main.css'
@@ -20,5 +21,7 @@ export function Main(app) {
     TresRaya()
   } else if (lastPage === 'Memoria') {
     Memoria()
+  } else if (lastPage === 'Mateo') {
+    Mateo()
   }
 }
