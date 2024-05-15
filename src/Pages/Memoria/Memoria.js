@@ -5,12 +5,15 @@
 // Para el funcionamiento del juego tenemos que tener en cuenta que cuando hagamos click en una carta esta se dará la vuelta, controlaremos cuando el usuario hace el segundo click para levantar una segunda, se compararán y si son iguales se quedarán levantadas y ganaremos un punto, si no coinciden se volverán a dar la vuelta. https://www.w3schools.com/howto/howto_css_flip_card.asp
 
 import { Card } from '../../components/Card/Card'
+import { puntosMemoria } from '../../components/PuntosMemoria/puntosMemoria'
 import { shuffleArray } from '../../components/shuffle/shuffle'
 import './Memoria.css'
 import listaImages from './MemoriaData'
 
 export const Memoria = () => {
   const divApp = document.querySelector('main')
+  let clicks = 0
+  let pairs = 0
   localStorage.setItem('lastPage', 'Memoria')
   divApp.innerHTML = ''
   const headingelement = document.createElement('h2')
@@ -20,7 +23,7 @@ export const Memoria = () => {
   divApp.appendChild(gameElement)
   gameElement.classList.add('gridCards', 'green', 'tapete')
 
-  shuffleArray(listaImages)
+  //shuffleArray(listaImages)
   listaImages.forEach((element) => {
     const cardA = document.createElement('a')
     gameElement.appendChild(cardA)
@@ -32,7 +35,7 @@ export const Memoria = () => {
       'click',
       function voltea(event) {
         cardA.querySelector('figcaption').classList.toggle('hideCaption')
-
+        clicks += 1
         cardA.querySelector('img').classList.toggle('hideImage')
         cardA.classList.toggle('flipped')
         var elementsFlipped = document.getElementsByClassName('flipped')
@@ -46,6 +49,8 @@ export const Memoria = () => {
             console.log(elementsFlipped[0].querySelector('h3').innerHTML)
             console.log(elementsFlipped[1].querySelector('h3').innerHTML)
             console.log('son iguales!')
+
+            pairs += 1
             // elementsFlipped[0].classList.add('paired')
             // elementsFlipped[1].classList.add('paired')
             //TODO creando una nueva colleccion aun solo quita al ultimo elemento
@@ -74,8 +79,25 @@ export const Memoria = () => {
             })
           }
         }
+
+        puntosMemoria(clicks, pairs)
+        if (pairs === 8) {
+          if (
+            Number(localStorage.getItem('memClicks')) > clicks ||
+            !localStorage.getItem('memClicks')
+          ) {
+            localStorage.setItem('memClicks', clicks)
+          }
+
+          alert('Completo! Guardamos tu puntuación Máxima')
+
+          Memoria()
+        }
       },
       { passive: true }
     )
   })
+  const pointSection = document.createElement('section')
+  pointSection.id = 'pointSection'
+  divApp.appendChild(pointSection)
 }
