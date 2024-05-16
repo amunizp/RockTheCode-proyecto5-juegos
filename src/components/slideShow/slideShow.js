@@ -1,4 +1,5 @@
 import './slideShow.css'
+//TODO si estoy en este juego y salto a otra página tengo error "Uncaught TypeError: undefined has no properties" no se porque.
 let slideIndex = 1
 
 export function showSlides(selectorClass) {
