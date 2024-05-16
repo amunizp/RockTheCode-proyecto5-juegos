@@ -29,4 +29,7 @@ export function footer(app) {
   const supriseArribution = document.createElement('p')
   supriseArribution.innerHTML = `<a href="https://www.flaticon.com/free-icons/mystery-box" title="mystery box icons">Mystery box icons created by artcus - Flaticon</a>`
   pFoot.appendChild(supriseArribution)
+  const emmaArribution = document.createElement('p')
+  emmaArribution.innerHTML = `CSS layout design and other drawings done by Emma Scott, thank you Emma!`
+  pFoot.appendChild(emmaArribution)
 }
