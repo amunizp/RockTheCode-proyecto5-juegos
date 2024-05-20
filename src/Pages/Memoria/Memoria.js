@@ -40,58 +40,60 @@ export const Memoria = () => {
         var elementsFlipped = document.getElementsByClassName('flipped')
 
         console.log(elementsFlipped)
-        if (elementsFlipped.length > 1) {
-          if (
-            elementsFlipped[0].querySelector('h3').innerHTML ===
-            elementsFlipped[1].querySelector('h3').innerHTML
-          ) {
-            console.log(elementsFlipped[0].querySelector('h3').innerHTML)
-            console.log(elementsFlipped[1].querySelector('h3').innerHTML)
-            console.log('son iguales!')
+        setTimeout(function () {
+          if (elementsFlipped.length > 1) {
+            if (
+              elementsFlipped[0].querySelector('h3').innerHTML ===
+              elementsFlipped[1].querySelector('h3').innerHTML
+            ) {
+              console.log(elementsFlipped[0].querySelector('h3').innerHTML)
+              console.log(elementsFlipped[1].querySelector('h3').innerHTML)
+              console.log('son iguales!')
 
-            pairs += 1
-            // elementsFlipped[0].classList.add('paired')
-            // elementsFlipped[1].classList.add('paired')
-            //TODO creando una nueva colleccion aun solo quita al ultimo elemento
-            //?https://developer.mozilla.org/es/docs/Web/API/EventTarget/removeEventListener#coincidiendo_disparadores_de_evento_para_su_eliminaci%C3%B3n
-            //! funciona por que le di la clase Paired
-            document.querySelectorAll('.flipped').forEach(function (el) {
-              //?no se porque el primer evento no se quita
-              el.removeEventListener('click', voltea, false)
-              el.classList.toggle('flipped')
-              el.classList.add('paired')
-            })
-            //TODO esto lo saque de aqui pero lo que hace es copiar el elemento sin el evento: https://stackoverflow.com/questions/4386300/javascript-dom-how-to-remove-all-event-listeners-of-a-dom-object PERO FUNCIONA!
-            // elementFlipped01.outerHTML = elementFlipped01.outerHTML
-            // elementFlipped02.outerHTML = elementFlipped02.outerHTML
-            //! o esto que parece que es mejor:
-            // elementFlipped01.replaceWith(elementFlipped01.cloneNode(true))
-            // elementFlipped02.replaceWith(elementFlipped02.cloneNode(true))
-          } else {
-            console.log('son distintos')
+              pairs += 1
+              // elementsFlipped[0].classList.add('paired')
+              // elementsFlipped[1].classList.add('paired')
+              //TODO creando una nueva colleccion aun solo quita al ultimo elemento
+              //?https://developer.mozilla.org/es/docs/Web/API/EventTarget/removeEventListener#coincidiendo_disparadores_de_evento_para_su_eliminaci%C3%B3n
+              //! funciona por que le di la clase Paired
+              document.querySelectorAll('.flipped').forEach(function (el) {
+                //?no se porque el primer evento no se quita
+                el.removeEventListener('click', voltea, false)
+                el.classList.toggle('flipped')
+                el.classList.add('paired')
+              })
+              //TODO esto lo saque de aqui pero lo que hace es copiar el elemento sin el evento: https://stackoverflow.com/questions/4386300/javascript-dom-how-to-remove-all-event-listeners-of-a-dom-object PERO FUNCIONA!
+              // elementFlipped01.outerHTML = elementFlipped01.outerHTML
+              // elementFlipped02.outerHTML = elementFlipped02.outerHTML
+              //! o esto que parece que es mejor:
+              // elementFlipped01.replaceWith(elementFlipped01.cloneNode(true))
+              // elementFlipped02.replaceWith(elementFlipped02.cloneNode(true))
+            } else {
+              console.log('son distintos')
 
-            //TODO modern solution https://stackoverflow.com/questions/22270664/how-to-remove-a-class-from-elements-in-pure-javascript might be best?
-            document.querySelectorAll('.flipped').forEach(function (el) {
-              el.querySelector('figcaption').classList.toggle('hideCaption')
-              el.querySelector('img').classList.toggle('hideImage')
-              el.classList.toggle('flipped')
-            })
-          }
-        }
-
-        puntosMemoria(clicks, pairs)
-        if (pairs === 8) {
-          if (
-            Number(localStorage.getItem('memClicks')) > clicks ||
-            !localStorage.getItem('memClicks')
-          ) {
-            localStorage.setItem('memClicks', clicks)
+              //TODO modern solution https://stackoverflow.com/questions/22270664/how-to-remove-a-class-from-elements-in-pure-javascript might be best?
+              document.querySelectorAll('.flipped').forEach(function (el) {
+                el.querySelector('figcaption').classList.toggle('hideCaption')
+                el.querySelector('img').classList.toggle('hideImage')
+                el.classList.toggle('flipped')
+              })
+            }
           }
 
-          alert('Completo! Guardamos tu puntuación Máxima')
+          puntosMemoria(clicks, pairs)
+          if (pairs === 8) {
+            if (
+              Number(localStorage.getItem('memClicks')) > clicks ||
+              !localStorage.getItem('memClicks')
+            ) {
+              localStorage.setItem('memClicks', clicks)
+            }
 
-          Memoria()
-        }
+            alert('Completo! Guardamos tu puntuación Máxima')
+
+            Memoria()
+          }
+        }, 500)
       },
       { passive: true }
     )
