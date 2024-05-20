@@ -5,6 +5,10 @@ import { showSlides } from '../../components/slideShow/slideShow'
 import { selectElement } from '../../components/select/select'
 import { shuffleArray } from '../../components/shuffle/shuffle'
 var granja = Number(localStorage.getItem('granjas')) || 0
+const lastDate = new Date()
+var lastTime =
+  localStorage.getItem('lastTime') ||
+  localStorage.setItem('lastTime', lastDate.toLocaleDateString('es-ES'))
 export const Mateo = () => {
   const divApp = document.querySelector('main')
 
