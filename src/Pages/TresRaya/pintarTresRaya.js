@@ -4,6 +4,10 @@ export const pintarTresRaya = (gameElement, currentPlayer) => {
   const headingelement = document.createElement('h2')
   headingelement.textContent = 'Tres en Raya'
   divApp.appendChild(headingelement)
+  const instructions = document.createElement('p')
+  instructions.textContent =
+    'Juega con alguien o sólo. Si juegas solo recuerda que siempre ganas or empatas, nunca pierdes. '
+  divApp.appendChild(instructions)
   const formElement = document.createElement('form')
   formElement.id = 'xoForm'
   formElement.classList.add('flex-container', 'row')

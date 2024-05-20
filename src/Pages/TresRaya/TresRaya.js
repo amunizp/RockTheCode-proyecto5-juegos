@@ -47,21 +47,26 @@ export const TresRaya = () => {
     const pElement = document.createElement('p')
     pElement.textContent = ''
     XOElement.id = index
-    XOElement.appendChild(pElement)
-    // XOElement.textContent = 'O'
-    gameElement.appendChild(XOElement)
 
+    gameElement.appendChild(XOElement)
+    XOElement.appendChild(pElement)
+    var didIFinish = false
     XOElement.addEventListener('click', () => {
       if (currentPlayer === 'O' || currentPlayer === 'X') {
         if (pElement.textContent === '') {
-          pElement.textContent = currentPlayer
-          console.log('acabo de colocar una ' + currentPlayer)
-          currentPlayer = changeTurn(currentPlayer)
           turn += 1
-          console.log('esto es el turno ' + turn)
-          if (turn > 3) {
-            didIWin(turn, oWins, xWins, ties, currentPlayer, gameElement)
+          console.log('Esto es el turno ' + turn)
+
+          if (turn > 4) {
+            console.log(didIFinish)
+            console.log(turn)
+            window.requestAnimationFrame(() => {
+              didIWin(turn, oWins, xWins, ties, currentPlayer, gameElement)
+            })
           }
+          pElement.textContent = currentPlayer
+          console.log('acabo de colocar una ' + pElement.textContent)
+          currentPlayer = changeTurn(currentPlayer)
         }
       }
     })

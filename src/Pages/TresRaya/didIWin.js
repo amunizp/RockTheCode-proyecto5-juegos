@@ -18,52 +18,125 @@ export const didIWin = (
   gameElement
 ) => {
   const collectionOfCells = gameElement.getElementsByTagName('div')
-
-  winningConditions.forEach((win) => {
-    var newArray = []
-
-    win.forEach((element) => {
-      newArray.push(collectionOfCells[element].firstElementChild.innerText)
-    })
-    //https://stackoverflow.com/questions/14832603/check-if-all-values-of-array-are-equal
-    const allEqualX = (arr) => arr.every((v) => v === 'X')
-    if (
-      (collectionOfCells[win[0]].firstElementChild.innerText === 'O') &
-      (collectionOfCells[win[1]].firstElementChild.innerText === 'O') &
-      (collectionOfCells[win[2]].firstElementChild.innerText === 'O')
-    ) {
-      alert('O ha ganado, se resetea')
-      console.log('O ha ganador')
-      currentPlayer = ''
-      console.log('Total O wins ' + oWins)
-      oWins += 1
-      localStorage.setItem('oWins', oWins)
-      console.log('Total O wins ' + oWins)
-      return currentPlayer, oWins, TresRaya()
-    } else if (allEqualX(newArray)) {
-      //TODO enseñar como ganó el ultimo jugador
-      alert('X ha ganado, se resetea')
-      console.log('X ha ganado')
-      currentPlayer = ''
-      console.log('Total X wins' + xWins)
-      xWins += 1
-      console.log('Total X wins' + xWins)
-      localStorage.setItem('xWins', xWins)
-
-      return currentPlayer, xWins, TresRaya()
-    } else if (turn > 8) {
-      //TODO Socorro! no se como salir de el array!
-      console.log('empate')
-      currentPlayer = ''
-      turn = 0
-      console.log('empates antes de sumar uno ' + ties)
-      ties += 1
-      console.log('numero de Empates ' + ties)
-      localStorage.setItem('ties', ties)
-      alert('Empate, se resetea')
-      return turn, currentPlayer, ties, TresRaya()
+  //debe de ser 9 elements
+  console.log(collectionOfCells)
+  const allEqualX = (arr) => arr.every((v) => v === 'X')
+  const allEqualO = (arr) => arr.every((v) => v === 'O')
+  var didIFinish
+  //const allEqual = (arr) => arr.every((v) => v === currentPlayer)
+  window.requestAnimationFrame(() => {
+    var lineasPuestas = []
+    for (const element of collectionOfCells) {
+      lineasPuestas.push(element.firstElementChild.innerText)
     }
+    console.log(lineasPuestas)
 
-    console.log('es el turno numero: ' + turn)
+    winningConditions.forEach((win) => {
+      var lineaPuesta = []
+      win.forEach((element) => {
+        lineaPuesta.push(lineasPuestas[element])
+      })
+      console.log(lineaPuesta)
+      if (allEqualX(lineaPuesta)) {
+        console.log('linea! de X')
+        xWins += 1
+        console.log('Total X wins' + xWins)
+        localStorage.setItem('xWins', xWins)
+        turn = 0
+        didIFinish = `${currentPlayer} pierde.`
+
+        alert('Se acabó esta partida. Empieza de nuevo. ' + didIFinish)
+        currentPlayer = ''
+        didIFinish = false
+
+        return TresRaya()
+      } else if (allEqualO(lineaPuesta)) {
+        console.log('linea! de O')
+        oWins += 1
+        console.log('Total O wins' + oWins)
+        localStorage.setItem('oWins', oWins)
+        turn = 0
+        didIFinish = `${currentPlayer} pierde.`
+        alert('Se acabó esta partida. Empieza de nuevo. ' + didIFinish)
+        didIFinish = false
+        currentPlayer = ''
+
+        return TresRaya()
+      } else if (turn > 8) {
+        console.log('empate')
+        currentPlayer = ''
+        turn = 0
+        console.log('empates antes de sumar uno ' + ties)
+        ties += 1
+        console.log('numero de Empates ' + ties)
+        localStorage.setItem('ties', ties)
+        //alert('Empate, se resetea')
+        didIFinish = `Empate`
+        alert('Se acabó esta partida. Empieza de nuevo. ' + didIFinish)
+        didIFinish = false
+
+        return TresRaya() //turn, currentPlayer, ties,
+      } else {
+        console.log('No gané y no empaté Comprobe si gané en el turno: ' + turn)
+        didIFinish = 'Siguiente Turno'
+      }
+    })
   })
+  return didIFinish
 }
+//   winningConditions.forEach((win) => {
+//     //reviso condiciones de ganar
+//     var lineaDeResultados = []
+//     console.log(win)
+
+//     win.forEach((element) => {
+//       console.log(collectionOfCells[element].firstElementChild.innerText)
+//       window.requestAnimationFrame(() => {
+//         var cellContent = collectionOfCells[element].firstElementChild.innerText
+//         lineaDeResultados.push(cellContent)
+//         console.log(cellContent)
+//       })
+//     })
+//     //https://stackoverflow.com/questions/14832603/check-if-all-values-of-array-are-equal
+//     const allEqual = (arr) => arr.every((v) => v === currentPlayer)
+//     console.log(lineaDeResultados)
+//     //aqui compruebo si cada linea de resultados tiene todo X
+//     if (allEqual(lineaDeResultados)) {
+//       console.log('X ha ganado')
+//       if (currentPlayer === 'X') {
+//         xWins += 1
+//         console.log('Total X wins' + xWins)
+//         localStorage.setItem('xWins', xWins)
+//         turn = 0
+//         didIFinish = `${currentPlayer} gana.`
+//         currentPlayer = ''
+//       } else if (currentPlayer === 'O') {
+//         oWins += 1
+//         console.log('Total O wins' + oWins)
+//         localStorage.setItem('oWins', oWins)
+//         turn = 0
+//         didIFinish = `${currentPlayer} gana.`
+//         currentPlayer = ''
+//       } else {
+//         console.log(`something went wrong with ${currentPlayer}`)
+//       }
+
+//       //currentPlayer, xWins,
+//     } else if (turn > 8) {
+//       console.log('empate')
+//       currentPlayer = ''
+//       turn = 0
+//       console.log('empates antes de sumar uno ' + ties)
+//       ties += 1
+//       console.log('numero de Empates ' + ties)
+//       localStorage.setItem('ties', ties)
+//       //alert('Empate, se resetea')
+//       didIFinish = `Empate`
+//       return //turn, currentPlayer, ties,
+//     } else {
+//       console.log('No gané y no empaté Comprobe si gané en el turno: ' + turn)
+//       didIFinish = 'Siguiente Turno'
+//     }
+//   })
+//   return didIFinish
+// }
