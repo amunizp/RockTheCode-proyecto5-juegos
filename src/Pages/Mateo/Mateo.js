@@ -3,6 +3,7 @@ import listaImages from './MateoData'
 import './Mateo.css'
 import { showSlides } from '../../components/slideShow/slideShow'
 import { selectElement } from '../../components/select/select'
+import { shuffleArray } from '../../components/shuffle/shuffle'
 
 export const Mateo = () => {
   const divApp = document.querySelector('main')
@@ -22,7 +23,7 @@ export const Mateo = () => {
     'tapete',
     'slideshow-container'
   )
-
+  shuffleArray(listaImages)
   listaImages.forEach((image) => {
     const cardA0 = document.createElement('a')
     gameElement.appendChild(cardA0)
@@ -40,7 +41,7 @@ export const Mateo = () => {
   gameElement.appendChild(divSelected)
   const infoAndScore = document.createElement('article')
   divApp.appendChild(infoAndScore)
-  infoAndScore.innerHTML = `<h3>&#x1F6C8; Como Jugar</h3> <p>El objetivo es tocar 3 veces en la misma imagen. Si lo consigues obtienes mas puntos</p> <p>Próximas versiones tendrán mas dificultad</p> <h3 id="puntos">Puntuación acumulada: ${
+  infoAndScore.innerHTML = `<h3>&#x1F6C8; Como Jugar</h3> <p>El objetivo es tocar 3 veces en la misma imagen. Si lo consigues obtienes mas puntos</p> <p>Próximas versiones tendrán mas dificultad</p> <p> Cuando tengas 5 puntos podrás comprar una granja por valor de 5 puntos. La granja te dará un ponto automáticamente por cada dia pasados.</p> <h3 id="puntos">Puntuación acumulada: ${
     localStorage.getItem('triplete') || '0'
   } </h3> `
 }
