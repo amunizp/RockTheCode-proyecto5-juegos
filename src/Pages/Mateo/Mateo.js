@@ -4,7 +4,7 @@ import './Mateo.css'
 import { showSlides } from '../../components/slideShow/slideShow'
 import { selectElement } from '../../components/select/select'
 import { shuffleArray } from '../../components/shuffle/shuffle'
-
+var granja = Number(localStorage.getItem('granjas')) || 0
 export const Mateo = () => {
   const divApp = document.querySelector('main')
 
@@ -46,11 +46,22 @@ export const Mateo = () => {
   } </h3> `
   const farmButton = document.createElement('button')
   divApp.appendChild(farmButton)
-  farmButton.textContent = 'Buy a farm for 5 points'
+  farmButton.textContent = 'Compra una granja por 5 puntos'
 
   const fieldSection = document.createElement('section')
   fieldSection.classList.add('flex-container', 'row', 'field')
   divApp.appendChild(fieldSection)
+  if (Number(localStorage.getItem('granjas')) > 0) {
+    console.log(`Hay granjas `)
+    for (
+      let index = 0;
+      index < Number(localStorage.getItem('granjas'));
+      index++
+    ) {
+      Card(fieldSection, '', '', 'OOO', '', '50px', '50px')
+      fieldSection.querySelector('figure:not(.farm)').classList.add('farm')
+    }
+  }
   farmButton.addEventListener('click', () => {
     if (
       localStorage.getItem('triplete') > 5 &&
@@ -61,6 +72,8 @@ export const Mateo = () => {
         'triplete',
         `${Number(localStorage.getItem('triplete')) - 5}`
       )
+      granja++
+      localStorage.setItem('granjas', granja)
       fieldSection.querySelector('figure:not(.farm)').classList.add('farm')
       const pointHeading = document.getElementById('puntos')
       pointHeading.innerHTML = `Puntuación acumulada: ${localStorage.getItem(
