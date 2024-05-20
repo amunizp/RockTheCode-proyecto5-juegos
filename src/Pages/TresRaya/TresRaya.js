@@ -23,14 +23,14 @@ export const TresRaya = () => {
   const oStart = document.getElementById('btnO')
   oStart.addEventListener('click', function () {
     currentPlayer = 'O'
-    console.log('he elegido pitar ' + currentPlayer)
+    console.log('He elegido pintar ' + currentPlayer)
     const formElement = document.getElementById('xoForm')
     formElement.remove()
   })
   const xStart = document.getElementById('btnX')
   xStart.addEventListener('click', function () {
     currentPlayer = 'X'
-    console.log('he elegido pitar ' + currentPlayer)
+    console.log('He elegido pintar ' + currentPlayer)
     const formElement = document.getElementById('xoForm')
     formElement.remove()
   })
@@ -52,6 +52,12 @@ export const TresRaya = () => {
     XOElement.appendChild(pElement)
     var didIFinish = false
     XOElement.addEventListener('click', () => {
+      // const collectionOfCells = gameElement.getElementsByTagName('div')
+      // //debe de ser 9 elements
+      // console.log(collectionOfCells)
+      // console.log(
+      //   `En la posicion 1 hay un: ${collectionOfCells[1].firstElementChild.innerText}`
+      // )
       if (currentPlayer === 'O' || currentPlayer === 'X') {
         if (pElement.textContent === '') {
           turn += 1

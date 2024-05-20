@@ -18,8 +18,7 @@ export const didIWin = (
   gameElement
 ) => {
   const collectionOfCells = gameElement.getElementsByTagName('div')
-  //debe de ser 9 elements
-  console.log(collectionOfCells)
+
   const allEqualX = (arr) => arr.every((v) => v === 'X')
   const allEqualO = (arr) => arr.every((v) => v === 'O')
   var didIFinish
