@@ -1,3 +1,10 @@
 .tapete {
   padding: var(--rtc-gap-s);
 }
+
+.field {
+  background-color: var(--rtc-color-3);
+}
+.farm p {
+  color: var(--rtc-color-4);
+}

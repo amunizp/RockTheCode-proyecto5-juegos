@@ -41,7 +41,33 @@ export const Mateo = () => {
   gameElement.appendChild(divSelected)
   const infoAndScore = document.createElement('article')
   divApp.appendChild(infoAndScore)
-  infoAndScore.innerHTML = `<h3>&#x1F6C8; Como Jugar</h3> <p>El objetivo es tocar 3 veces en la misma imagen. Si lo consigues obtienes mas puntos</p> <p>Próximas versiones tendrán mas dificultad</p> <p> Cuando tengas 5 puntos podrás comprar una granja por valor de 5 puntos. La granja te dará un ponto automáticamente por cada dia pasados.</p> <h3 id="puntos">Puntuación acumulada: ${
+  infoAndScore.innerHTML = `<h3>&#x1F6C8; Como Jugar</h3> <p>El objetivo es tocar 3 veces en la misma imagen. Si lo consigues obtienes mas puntos</p> <p>Próximas versiones tendrán mas dificultad</p> <p> Cuando tengas 5 puntos podrás comprar una granja por valor de 5 puntos. La granja te dará un punto automáticamente por cada dia que pase.</p> <h3 id="puntos">Puntuación acumulada: ${
     localStorage.getItem('triplete') || '0'
   } </h3> `
+  const farmButton = document.createElement('button')
+  divApp.appendChild(farmButton)
+  farmButton.textContent = 'Buy a farm for 5 points'
+
+  const fieldSection = document.createElement('section')
+  fieldSection.classList.add('flex-container', 'row', 'field')
+  divApp.appendChild(fieldSection)
+  farmButton.addEventListener('click', () => {
+    if (
+      localStorage.getItem('triplete') > 5 &&
+      localStorage.getItem('triplete') > 0
+    ) {
+      Card(fieldSection, '', '', 'OOO', '', '50px', '50px')
+      localStorage.setItem(
+        'triplete',
+        `${Number(localStorage.getItem('triplete')) - 5}`
+      )
+      fieldSection.querySelector('figure:not(.farm)').classList.add('farm')
+      const pointHeading = document.getElementById('puntos')
+      pointHeading.innerHTML = `Puntuación acumulada: ${localStorage.getItem(
+        'triplete'
+      )}`
+    } else {
+      alert('No tienes suficientes Puntos!')
+    }
+  })
 }
