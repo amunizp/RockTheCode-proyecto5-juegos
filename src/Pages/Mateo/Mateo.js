@@ -50,7 +50,7 @@ export const Mateo = () => {
   } </h3> `
   const farmButton = document.createElement('button')
   divApp.appendChild(farmButton)
-  farmButton.textContent = 'Compra una granja por 5 puntos'
+  farmButton.textContent = 'Compra una granja por 5 puntos.'
 
   const fieldSection = document.createElement('section')
   fieldSection.classList.add('flex-container', 'row', 'field')
@@ -67,7 +67,13 @@ export const Mateo = () => {
     }
   }
   farmButton.addEventListener('click', () => {
-    if (
+    if (localStorage.getItem('granjas') > 15) {
+      alert('Tienes demasiadas granjas tendras que conseguir otra finca')
+      const fieldButton = document.createElement('button')
+      divApp.appendChild(fieldButton)
+      fieldButton.id = 'fieldButton'
+      fieldButton.textContent = 'Consigue una finca nueva'
+    } else if (
       localStorage.getItem('triplete') > 5 &&
       localStorage.getItem('triplete') > 0
     ) {
@@ -85,6 +91,15 @@ export const Mateo = () => {
       )}`
     } else {
       alert('No tienes suficientes Puntos!')
+    }
+  })
+  const fieldButton = divApp.querySelector('button')
+  fieldButton.addEventListener('click', () => {
+    if (localStorage.getItem('triplete') > 179) {
+      console.log('Pues a montar una finca!')
+      const fieldSection = document.createElement('section')
+      fieldSection.classList.add('flex-container', 'row', 'field')
+      divApp.appendChild(fieldSection)
     }
   })
 }

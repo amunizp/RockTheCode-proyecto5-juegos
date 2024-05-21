@@ -4,6 +4,8 @@
 
 .field {
   background-color: var(--rtc-color-3);
+  width: 300px;
+  height: 300px;
 }
 .farm p {
   color: var(--rtc-color-4);
