@@ -4,6 +4,7 @@ import { arrayEnlaces } from '../../Data/enlaces'
 export const Elige = () => {
   const divApp = document.querySelector('main')
   localStorage.setItem('lastPage', 'Elige')
+  history.pushState('', '', '?page=Elige')
   divApp.innerHTML = ''
   const headingelement = document.createElement('h2')
   headingelement.textContent = 'Elige un Juego'

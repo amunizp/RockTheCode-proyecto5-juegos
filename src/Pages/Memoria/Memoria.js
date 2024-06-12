@@ -15,6 +15,7 @@ export const Memoria = () => {
   let clicks = 0
   let pairs = 0
   localStorage.setItem('lastPage', 'Memoria')
+  history.pushState('', '', '?page=Memoria')
   divApp.innerHTML = ''
   const headingelement = document.createElement('h2')
   headingelement.textContent = 'Juego De Memoria'

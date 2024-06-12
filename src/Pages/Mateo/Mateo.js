@@ -13,6 +13,7 @@ export const Mateo = () => {
   const divApp = document.querySelector('main')
 
   localStorage.setItem('lastPage', 'Mateo')
+  history.pushState('', '', '?page=Mateo')
   divApp.innerHTML = ''
   const headingelement = document.createElement('h2')
   headingelement.textContent = 'El Juego De Mateo'

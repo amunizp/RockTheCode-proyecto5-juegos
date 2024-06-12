@@ -15,6 +15,20 @@ const render = () => {
 }
 // ${Main()}
 // ${Footer()}
+const address = window.location.href
+console.log(address)
+var page = address
+  .substring(address.lastIndexOf('=') + 1)
+  .split('#')
+  .shift()
+localStorage.setItem('lastPage', page)
+// addEventListener('popstate', () => {
+//   location.reload()
+// })
+onhashchange = (event) => {
+  location.reload()
+}
 render()
+
 // addAboutListeners()
 // addMainListeners()
