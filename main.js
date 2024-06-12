@@ -15,7 +15,7 @@ const render = () => {
 }
 // ${Main()}
 // ${Footer()}
-const address = new URL(window.location.href)
+var address = new URL(window.location.href)
 console.log(address)
 var page = address.searchParams.get('page') || 'Elige'
 // .substring(address.lastIndexOf('=') + 1)
@@ -24,6 +24,9 @@ var page = address.searchParams.get('page') || 'Elige'
 console.log(page)
 localStorage.setItem('lastPage', page)
 addEventListener('popstate', () => {
+  address = new URL(window.location.href)
+  var page = address.searchParams.get('page') || 'Elige'
+  localStorage.setItem('lastPage', page)
   Main(app)
 })
 // onhashchange = (event) => {
