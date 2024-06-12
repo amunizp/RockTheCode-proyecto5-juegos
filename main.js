@@ -15,12 +15,13 @@ const render = () => {
 }
 // ${Main()}
 // ${Footer()}
-const address = window.location.href
+const address = new URL(window.location.href)
 console.log(address)
-var page = address
-  .substring(address.lastIndexOf('=') + 1)
-  .split('#')
-  .shift()
+var page = address.searchParams.get('page') || 'Elige'
+// .substring(address.lastIndexOf('=') + 1)
+// .split('#')
+// .shift() || 'Elige'
+console.log(page)
 localStorage.setItem('lastPage', page)
 addEventListener('popstate', () => {
   Main(app)
