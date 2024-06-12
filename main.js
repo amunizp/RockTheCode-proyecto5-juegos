@@ -22,12 +22,12 @@ var page = address
   .split('#')
   .shift()
 localStorage.setItem('lastPage', page)
-// addEventListener('popstate', () => {
-//   location.reload()
-// })
-onhashchange = (event) => {
+addEventListener('popstate', () => {
   location.reload()
-}
+})
+// onhashchange = (event) => {
+//   location.reload()
+// }
 render()
 
 // addAboutListeners()

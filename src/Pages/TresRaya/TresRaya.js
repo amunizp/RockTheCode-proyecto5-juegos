@@ -14,7 +14,7 @@ export const TresRaya = () => {
   var oWins = Number(localStorage.getItem('oWins')) || 0
   var ties = Number(localStorage.getItem('ties')) || 0
   localStorage.setItem('lastPage', 'TresRaya')
-  history.pushState('', '', '?page=TresRaya')
+  history.pushState('', '', '?page=TresRaya#')
   var currentPlayer = ''
   const maxTurns = 9
   let turn = 0
