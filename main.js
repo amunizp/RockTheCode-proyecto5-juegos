@@ -23,7 +23,7 @@ var page = address
   .shift()
 localStorage.setItem('lastPage', page)
 addEventListener('popstate', () => {
-  location.reload()
+  Main(app)
 })
 // onhashchange = (event) => {
 //   location.reload()
