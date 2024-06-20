@@ -24,6 +24,11 @@ export function Header(app) {
     aElement.textContent = enlaces.texto
     aElement.addEventListener('click', enlaces.page)
     liElement.appendChild(aElement)
+    aElement.addEventListener("click", (e) =>{
+      e.preventDefault();
+      history.pushState('', '', enlaces.url)
+      enlaces.page()
+    })
   })
 
   return app.appendChild(headerElement)

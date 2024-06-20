@@ -17,22 +17,20 @@ const render = () => {
 // ${Footer()}
 var address = new URL(window.location.href)
 console.log(address)
-var page = address.searchParams.get('page') || 'Elige'
-// .substring(address.lastIndexOf('=') + 1)
-// .split('#')
-// .shift() || 'Elige'
+var page = localStorage.getItem('lastPage')|| 'Elige'
+
 console.log(page)
 localStorage.setItem('lastPage', page)
 addEventListener('popstate', () => {
   address = new URL(window.location.href)
-  var page = address.searchParams.get('page') || 'Elige'
+  var page = address.pathname.substring(1) || 'Elige'
   localStorage.setItem('lastPage', page)
   Main(app)
+  console.log('cargue el Main despues de popState')
 })
 // onhashchange = (event) => {
 //   location.reload()
 // }
 render()
 
-// addAboutListeners()
-// addMainListeners()
+

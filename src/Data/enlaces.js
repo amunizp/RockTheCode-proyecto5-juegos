@@ -5,28 +5,28 @@ import { TresRaya } from '../Pages/TresRaya/TresRaya'
 
 export const arrayEnlaces = [
   {
-    url: '#',
+    url: '/Elige',
     imagen: '../../images/gears.png',
     texto: 'Elige un Juego',
     description: 'Elige el juego que te apetezca.',
     page: Elige
   },
   {
-    url: '#',
+    url: '/TresRaya',
     imagen: '../../images/tick-tack-toe.png',
     texto: 'Tres en Raya',
     description: 'El tres en raya de siempre. Busca a un amigo para jugar',
     page: TresRaya
   },
   {
-    url: '#',
+    url: '/Memoria',
     imagen: '../../images/photos.png',
     texto: 'Memoria',
     description: 'Busca las parejas.',
     page: Memoria
   },
   {
-    url: '#',
+    url: '/Mateo',
     imagen: '../../images/question.png',
     texto: 'El Juego de Mateo',
     description:
